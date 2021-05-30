@@ -46,6 +46,7 @@ example 搭建mailserver的例子
 - 调用`RocketmqUtil`中的 `recordLogs` 方法，将`MsgMQ`作为参数传递此方法中
 - 注意：项目正常运行的前提是，项目环境已正确搭建并在配置文件中正确配置
 - 如需更改邮件模板，请在`mail.html`、`MailServer`中进行相应修改
+可以参考`example`模块进行使用
 
 #### 学习本项目
 

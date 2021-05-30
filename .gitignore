@@ -1,0 +1,3 @@
+# Project exclude paths
+/example/target/
+/mailserver/target/

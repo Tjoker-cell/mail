@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjoker.mapper.MailSendLogsMapper" >
+
+  <insert id="insert" parameterType="com.tjoker.model.MailSendLogs" >
+    insert into mail_send_logs (msgID, group_name, msg_topic,
+      msg_tag, userID, msg_status,
+      count, tryTime, createTime,
+      updateTime,msg_body)
+    values (#{msgID,jdbcType=VARCHAR}, #{group_name,jdbcType=VARCHAR}, #{msg_topic},
+      #{msg_tag,jdbcType=VARCHAR}, #{userID,jdbcType=BIGINT}, #{msg_status,jdbcType=INTEGER},
+      #{count}, #{tryTime}, #{createTime},
+      #{updateTime},#{msg_body,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateStatus" >
+    update mail_send_logs
+    set  msg_status=#{status}
+    where msgID = #{msgid}
+  </update>
+
+<!--当前状态为0,且重试时间小于当前时间-->
+  <select id="getMailSendLogsByStatus"  resultType="com.tjoker.model.MailSendLogs">
+    select * from mail_send_logs
+    where msg_status=0 and tryTime &lt; sysdate()
+  </select>
+
+  <update id="updateCount" >
+    update mail_send_logs
+    set  count=count+1,
+         updateTime=#{date}
+    where msgID = #{msgid}
+  </update>
+
+</mapper>

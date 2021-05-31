@@ -56,6 +56,6 @@ example 搭建mailserver的例子
 
 #### 学习本项目
 
-[MailServer相关博客](https://blog.csdn.net/qq_43591899?spm=1001.2014.3001.5343)
+[MailServer相关博客](https://blog.csdn.net/qq_43591899/article/details/117406973)
 
 
